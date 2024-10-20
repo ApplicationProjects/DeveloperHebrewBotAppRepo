@@ -33,17 +33,27 @@
 	<build>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>3.2.0</version> <!-- или последняя доступная версия -->
-                <configuration>
-                    <archive>
-                        <manifest>
-                            <mainClass>com.bot.NewHebrewBotAppl</mainClass> <!-- Замените на ваш главный класс -->
-                        </manifest>
-                    </archive>
-                </configuration>
-            </plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-shade-plugin</artifactId>
+            <version>3.2.4</version> <!-- Убедитесь, что это актуальная версия -->
+            <executions>
+                <execution>
+                    <phase>package</phase>
+                    <goals>
+                        <goal>shade</goal>
+                    </goals>
+                    <configuration>
+                        <createDependencyReducedPom>false</createDependencyReducedPom>
+                        <archive>
+                            <manifest>
+                                <mainClass>com.bot.NewHebrewBotAppl</mainClass> <!-- Замените на ваш главный класс -->
+                            </manifest>
+                        </archive>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
+            
         </plugins>
     </build>
 </project>
